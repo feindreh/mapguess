@@ -11,9 +11,9 @@ const questionFaktory = (x,y,name) => {
         x,y,name
     }
 }
-Aufgaben.push(questionFaktory(381 ,227,"Carl-Benz-Stadion"))
-Aufgaben.push(questionFaktory(893 ,382,"Ilvesheimer Brücke"))
-Aufgaben.push(questionFaktory(506 ,420,"SAP-Arena"))
+Aufgaben.push(questionFaktory(381 ,227,"das Carl-Benz-Stadion"))
+Aufgaben.push(questionFaktory(893 ,382,"die Ilvesheimer Brücke"))
+Aufgaben.push(questionFaktory(506 ,420,"die SAP-Arena"))
 
 
 
@@ -98,12 +98,20 @@ function Game(){
     return(
         <div id="Game">
             
-            <div>Game</div>
-            <div>
-                {finished? "Spiel vorbei" : `Findest du ${target.name}?`}
+            <div id ="header">
+                <div>
+                    {finished? ("Spiel vorbei") : (`Findest du ${target.name}?`)}
+                </div>
+                <div>
+                    Punkte: {score}
+                </div>
+                <button type="button" onClick={reset}>
+                    Neustart
+                </button> 
             </div>
-            <div>Punkte:{score}</div>
-            <button type="button" onClick={reset}>Neustart</button> 
+
+            
+            
             <div className="imgwrap">
                 <div className="icon TargetMark" ref={TargetMarkerRef}>
                     <Icon path={mdiMapMarker}/>
