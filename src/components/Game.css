@@ -1,0 +1,30 @@
+#Game{
+    width:100%;
+    border:solid black 1px;
+}
+
+.imagewrap{
+    position: relative;
+}
+
+img{
+    width: 100%;
+    height:auto;
+}
+
+.icon{
+    position: absolute;
+    width:30px;
+    height:auto;
+    visibility: hidden;
+
+    transform:translate(-50%,-80%);
+}
+
+.TargetMark{
+    color: red;
+}
+
+.ClickMark{
+    color:rgb(9, 216, 9);
+}
