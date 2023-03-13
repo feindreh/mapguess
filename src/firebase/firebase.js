@@ -14,14 +14,12 @@ export async function getImageUrlFromName(name){
     return url
 }
 
-export async function uploadImage(name,file){
+export async function uploadImage(id,file){
 
     const storage = getStorage();
-    const storageRef = ref(storage, name);
+    const storageRef = ref(storage, id);
 
-    await uploadBytes(storageRef,file).then((snapshot) => {
-    console.log(snapshot);
-    });
+    await uploadBytes(storageRef,file)
 }
 
 // Firestore
