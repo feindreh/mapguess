@@ -6,7 +6,7 @@ import "./reset.css"
 import NavBar from "./components/Nav";
 import Home from "./components/Home";
 import PickPlay from "./components/PickPlay";
-import Create from "./components/Create";
+import Create from "./components/Create/Create";
 import Game from "./components/Game";
 
 
