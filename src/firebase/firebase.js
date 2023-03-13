@@ -1,5 +1,5 @@
 import { getStorage, ref ,uploadBytes,getDownloadURL} from "firebase/storage";
-import { doc, getFirestore, setDoc } from "firebase/firestore"; 
+import { collection, doc, getDoc, getDocs, getFirestore, setDoc } from "firebase/firestore"; 
 import app from "./app";
 
 ;
@@ -31,6 +31,23 @@ const db = getFirestore(app);
 export async function updateMap(id,obj){
     await setDoc(doc(db, "map" ,id), obj);
     console.log("save")
+}
+
+export async function getMapCollection(){
+    const maps = await getDocs(collection(db, "map"));
+
+    const mapArray = []
+    maps.forEach((map) => {
+      mapArray.push(map.data())
+  })
+
+    return mapArray
+}
+
+export async function getMapSingle(id){
+    const docRef = doc(db,"map",id)
+    const Map = await getDoc(docRef)
+    return Map
 }
 
 
