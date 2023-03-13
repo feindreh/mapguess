@@ -6,12 +6,18 @@ import app from "./app";
 // storage
 
 export async function getImageUrlFromId(id){
-    const storage = getStorage();
-    const storageRef = ref(storage, id);
+    try{
+        const storage = getStorage();
+        const storageRef = ref(storage, id);
 
-    const url = await getDownloadURL(storageRef)
+        const url = await getDownloadURL(storageRef)
 
-    return url
+        return url
+    }catch{
+        console.log("no image found")
+        return false
+    }
+    
 }
 
 export async function uploadImage(id,file){
