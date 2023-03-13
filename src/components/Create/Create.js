@@ -4,10 +4,10 @@ import { useEffect, useRef,useState } from "react"
 import uniqid from "uniqid"
 import { useParams } from "react-router"
 
-import { updateMap,getMapSingle,uploadImage  } from "../../firebase/firebase"
+import { updateMap,getMapSingle } from "../../firebase/firebase"
 
 import Point from "./Point"
-
+import Image from "./Image"
 
 function Create(){
     
@@ -24,10 +24,9 @@ function Create(){
     const [id,setId] = useState(getId())
     const [name,setName] = useState(null)
     const [points,setPoints] = useState([newPoint()])
-    const [image,setImage] = useState()
 
     const NameRef = useRef()
-    const ImageRef = useRef()
+
 
     async function load(){
         const map = await getMapSingle(id)
@@ -39,7 +38,6 @@ function Create(){
         load() 
         }
     },[])
-
     function newPoint(){
         return{
             id:uniqid(),
@@ -48,38 +46,21 @@ function Create(){
             y:null,
         }
     }
-
-
     function upload(){
        updateMap(id,{
            name:name,
            id:id,
            points:points,
        });
-       console.log(image)
-       uploadImage(id,image)
     }
 
     
     return(
-        <div>
-
+        <div id="create">
             <button type="button" onClick={upload}>Sichern</button>
             <label>Name dieser Karte</label>
             <input type="text" onChange={()=>{setName(NameRef.current.value)}} ref={NameRef} defaultValue={name} placeholder={"Name der Karte"}></input>
-
-            {
-                image?
-                (<div>
-                    <button type="button" onClick={()=>{setImage(null)}}>Anderes Bild Nutzen</button>
-                    
-                </div>)
-                :
-                (<div>
-                    <input type="file" ref={ImageRef}></input>
-                    <button type="button" onClick={()=>{setImage(ImageRef.current.files[0])}}>Bild Nutzen</button>
-                </div>)
-            }
+            <Image id={id}/>
             {points.map((point) => <Point key={point.id} point={point}/>)}
             <button type="button" onClick={()=>{setPoints([...points,newPoint()])}}>Neuer Punkt</button>
         </div>
