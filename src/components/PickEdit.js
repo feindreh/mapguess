@@ -15,15 +15,12 @@ function PickEdit(){
     useEffect(()=>{
             load()
         },[])
-   
-
-        console.log(maps)
 
     return (
         <div>
             {maps.map((map) => {
                 return(
-                    <div>
+                    <div key={map.id}>
                         <div>{map.name}</div>
                         <Link to={`/create/${map.id}`}>
                             <button type="button">Diese Karte bearbeiten</button>
