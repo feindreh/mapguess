@@ -9,7 +9,7 @@ function Home(){
                 Play
             </Link>
             <Link to={"/create"}>
-                Create
+                Edit/Create
             </Link>
         </div>
     )
