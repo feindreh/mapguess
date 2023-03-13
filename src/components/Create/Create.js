@@ -20,16 +20,11 @@ function Create(){
             return paramId
         }
     }
-    function getName(){
-        return null
-    }
-    function getPoints(){
-        return newPoint()
-    }
 
     const [id,setId] = useState(getId())
-    const [name,setName] = useState(getName())
-    const [points,setPoints] = useState([getPoints()])
+    const [name,setName] = useState(null)
+    const [points,setPoints] = useState([newPoint()])
+    
 
     async function load(){
         const map = await getMapSingle(id)
@@ -38,9 +33,9 @@ function Create(){
     }
 
     useEffect(()=>{
-        //get the right map 
-        load()
-        //setState it 
+        if(paramId !== undefined){
+        load() 
+        }
     },[])
 
     const NameRef = useRef()
