@@ -8,8 +8,11 @@ function Home(){
             <Link to={"/pickPlay"}>
                 Play
             </Link>
+            <Link to={"/pickEdit"}>
+                Bearbeiten
+            </Link>
             <Link to={"/create"}>
-                Edit/Create
+                Neue Karte
             </Link>
         </div>
     )
