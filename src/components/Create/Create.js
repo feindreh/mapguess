@@ -1,60 +1,74 @@
 import "./Create.css"
 
-import { useRef,useState } from "react"
+import { useEffect, useRef,useState } from "react"
+import uniqid from "uniqid"
+import { useParams } from "react-router"
 
-import uploadImage from "../../firebase/picture"
+import { updateMap,getMapSingle  } from "../../firebase/firebase"
+
+import Point from "./Point"
 
 
 function Create(){
+    
+    const {paramId} = useParams()
 
-
-    const [stage,setStage] = useState(1)
-
-    const [pickedFile,setPickedFile] = useState()
-    const [name,setName] = useState()
-    const [filePicked,setFilePicked] = useState(false)
-
-
-
-    const pictureRef = useRef()
-    const nameRef = useRef()
-
-
-    async function upload(){
-        await uploadImage(name,pickedFile)
-        setPickedFile()
-        setName()
-        setFilePicked(false)
-    }
-    function handleTextInput(){
-        setName(nameRef.current.value)  
-    }
-    function handleImageInput(){
-        const image = pictureRef.current.files[0]
-        if(image){
-            setFilePicked(true)
-            setPickedFile(pictureRef.current.files[0])      
+    function getId(){
+        if(paramId===undefined){
+            return uniqid()
         }else{
-            setFilePicked(false)
-        }  
+            return paramId
+        }
+    }
+    function getName(){
+        return null
+    }
+    function getPoints(){
+        return newPoint()
     }
 
-    if(stage===1){
-        return(
-            <div>
-                <button type="button">Create New Map</button>
-                <button type="button">Edit Map</button>
-            </div>
-        )
+    const [id,setId] = useState(getId())
+    const [name,setName] = useState(getName())
+    const [points,setPoints] = useState([getPoints()])
+
+    async function load(){
+        const map = await getMapSingle(id)
+        setName(map.name)
+        setPoints(map.points)
+    }
+
+    useEffect(()=>{
+        //get the right map 
+        load()
+        //setState it 
+    },[])
+
+    const NameRef = useRef()
+
+
+    function uploadMap(){
+       updateMap(id,{
+           name:name,
+           id:id,
+           points:points,
+       })
+    }
+    function newPoint(){
+        return{
+            id:uniqid(),
+            name:null,
+            x:null,
+            y:null,
+        }
     }
 
     return(
         <div>
-            <button type="button" onClick={()=>{console.log(name,pickedFile)}}>Log Picked file</button>
-            <button type="button" onClick={upload}>Upload</button>
-            <input type="file" ref={pictureRef} onChange={handleImageInput}/>
-            {filePicked? ("Uploaded"):("Upload something")}
-            <input type="text" ref={nameRef} onChange={handleTextInput}></input>
+            <button type="button" onClick={uploadMap}>Sichern</button>
+            <label>Name dieser Karte</label>
+            <input type="text" onChange={()=>{setName(NameRef.current.value)}} ref={NameRef} defaultValue={name} placeholder={"Name der Karte"}></input>
+            {points.map((point) => <Point key={point.id} point={point}/>)}
+            <button type="button" onClick={()=>{setPoints([...points,newPoint()])}}>Neuer Punkt</button>
         </div>
     )
 }
