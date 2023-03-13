@@ -47,7 +47,7 @@ export async function getMapCollection(){
 export async function getMapSingle(id){
     const docRef = doc(db,"map",id)
     const Map = await getDoc(docRef)
-    return Map
+    return Map.data()
 }
 
 
