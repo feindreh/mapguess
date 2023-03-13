@@ -24,8 +24,8 @@ function PickEdit(){
             {maps.map((map) => {
                 return(
                     <div>
+                        <div>{map.name}</div>
                         <Link to={`/create/${map.id}`}>
-                            <div>{map.name}</div>
                             <button type="button">Diese Karte bearbeiten</button>
                         </Link>
                     </div>
