@@ -5,9 +5,9 @@ import app from "./app";
 ;
 // storage
 
-export async function getImageUrlFromName(name){
+export async function getImageUrlFromId(id){
     const storage = getStorage();
-    const storageRef = ref(storage, name);
+    const storageRef = ref(storage, id);
 
     const url = await getDownloadURL(storageRef)
 
