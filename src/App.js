@@ -9,6 +9,7 @@ import PickPlay from "./components/PickPlay";
 import PickEdit from "./components/PickEdit";
 import Create from "./components/Create/Create";
 import Game from "./components/Game";
+import EditPoint from "./components/Create/EditPoint"
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/create" element={<Create/>}/>
         <Route path="/create/:paramId" element={<Create/>}/>
         <Route path="/play" element = {<Game/>}/>
+        <Route path="/editPoint/:mapID/:pointID" element={<EditPoint/>}></Route>
       </Routes>
     </div>
   );
