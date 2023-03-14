@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router"
-import { getImageUrlFromId, getMapSingle, getPoint} from "../../firebase/firebase"
+import { getImageUrlFromId, getMapSingle, updateMap} from "../../firebase/firebase"
+
+import { Link } from "react-router-dom";
 
 import Icon from '@mdi/react';
 import { mdiMapMarker } from '@mdi/js';
@@ -12,10 +14,10 @@ function EditPoint(){
     const {mapID,pointID} = useParams()
 
     const [url,setUrl] = useState()
+    const [map,setMap] = useState()
     const [point,setPoint] = useState()
-    const [place,setPlaced] = useState(false)
-    const [x,setX] = useState()
-    const [y,setY] = useState()
+    const [x,setX] = useState(null)
+    const [y,setY] = useState(null)
     
     const MarkRef = useRef()
     const ImageRef = useRef()
@@ -24,6 +26,7 @@ function EditPoint(){
         const newUrl = await getImageUrlFromId(mapID)
         setUrl(newUrl)
         const newMap = await getMapSingle(mapID)
+        setMap(newMap)
         const points = newMap.points
 
         points.forEach((point) => {if(point.id === pointID){
@@ -56,6 +59,22 @@ function EditPoint(){
         setY(y)
     }
 
+    async function upload(){
+
+        const newPoint = {
+            name:point.name,
+            id:point.id,
+            x:x,
+            y:y,
+        }
+        console.log(map)
+        const newPoints = [...map.points.filter((point) => point.id !== pointID),newPoint]
+        map.points = newPoints
+
+        //Upload new Map
+        await updateMap(mapID,map)
+    }
+
     useEffect(()=>{
         load()
     },[])
@@ -63,7 +82,10 @@ function EditPoint(){
     return(
         <div id="editPoint"> 
             <div>Wo ist {point?point.name:"Der Punkt"}</div>
-            <button type="button">Speichern und zurück</button>
+            <button type="button" onClick={upload}>Speichern</button>
+            <Link to = {`/create/${mapID}`}> 
+                <button type="button">Zurück</button>
+            </Link>
             <div className="imgwrap" ref={ImageRef}>
                 <div className="icon ClickMark" ref={MarkRef}>
                     <Icon path={mdiMapMarker}/>
