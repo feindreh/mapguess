@@ -65,7 +65,7 @@ function Create(){
             <label>Name dieser Karte</label>
             <input type="text" onChange={()=>{setName(NameRef.current.value)}} ref={NameRef} defaultValue={name} placeholder={"Name der Karte"}></input>
             <Image id={id}/>
-            {points.map((point) => <Point deletePoint={deletePoint}key={point.id} point={point}/>)}
+            {points.map((point) => <Point deletePoint={deletePoint}key={point.id} point={point} mapID={id}/>)}
             <button type="button" onClick={()=>{setPoints([...points,newPoint()])}}>Neuer Punkt</button>
         </div>
     )
