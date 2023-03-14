@@ -1,26 +1,38 @@
 import "./Game.css"
-import map from "../mapfirst.png"
-import { useState,useRef } from "react"
+import { useState,useRef, useEffect } from "react"
 
 import Icon from '@mdi/react';
-import { mdiMapMarker } from '@mdi/js';
-
-const Aufgaben = []
-const questionFaktory = (x,y,name) => {
-    return {
-        x,y,name
-    }
-}
-Aufgaben.push(questionFaktory(381 ,227,"das Carl-Benz-Stadion"))
-Aufgaben.push(questionFaktory(893 ,382,"die Ilvesheimer Brücke"))
-Aufgaben.push(questionFaktory(506 ,420,"die SAP-Arena"))
-
+import { mdiLoading, mdiMapMarker } from '@mdi/js';
+import { getImageUrlFromId, getMapSingle } from "../firebase/firebase";
+import { useParams } from "react-router";
 
 
 function Game(){
 
-    const [Targets,setTargets] = useState(Aufgaben)
-    const [target,setTarget] = useState(Targets[0])
+    const {id} = useParams()
+    const[loading,setLoading] = useState(true)
+
+    async function load(){
+        //load map
+        const map = await getMapSingle(id)
+        setMap(map)
+        //set Active Point
+        setActivePoint(map.points[0])
+        //load image
+        const image =await getImageUrlFromId(id)
+        setImage(image)
+        setLoading(false)
+    }
+
+    useEffect(()=>{
+        load()
+    },[])
+
+    const [map,setMap] = useState()
+    const [image,setImage] = useState()
+
+    const [activePoint,setActivePoint] = useState()
+
     const [count,setCount] = useState(0)
     const [score,setScore] = useState(0)
     const [finished,setFinished] = useState(false)
@@ -34,13 +46,13 @@ function Game(){
     function advance(points){
         setScore(score+points)
         setCount(count+1)
-        if(count+1 === Targets.length){finishGame()}else{
-          setTarget(Targets[count+1])  
+        if(count+1 === map.points.length){finishGame()}else{
+          setActivePoint(map.points[count+1])  
         }
         
     }
     function reset(){
-        setTarget(Targets[0])
+        setActivePoint(map.points[0])
         setCount(0)
         setScore(0)
         setFinished(false)
@@ -49,14 +61,8 @@ function Game(){
     }
     function click(e){
 
-        const baseWidth = 1000;
-        const baseHeight = 494
-
-        console.log(e.target.width)
-        console.log(e.target.height)
-
-        let xTarget = target.x * (e.target.width / baseWidth)
-        let yTarget = target.y * (e.target.height / baseHeight)
+        let xTarget = activePoint.x * e.target.width
+        let yTarget = activePoint.y * e.target.height
         let xClick=e.nativeEvent.offsetX
         let yClick=e.nativeEvent.offsetY
 
@@ -95,12 +101,18 @@ function Game(){
         TargetMarkerRef.current.style.visibility = "visible"
     }
 
+
+    if(loading){
+        return (
+            <div>Loading....</div>
+        )
+    }
     return(
         <div id="Game">
             
             <div id ="header">
                 <div>
-                    {finished? ("Spiel vorbei") : (`Findest du ${target.name}?`)}
+                    {finished? ("Spiel vorbei") : (`Findest du ${activePoint.name}?`)}
                 </div>
                 <div>
                     Punkte: {score}
@@ -119,7 +131,7 @@ function Game(){
                 <div className="icon ClickMark" ref={ClickedMarkerRef}>
                     <Icon path={mdiMapMarker}/>
                 </div>
-                <img id="map"src={map} alt="Hi" onClick={finished? ()=>{}:click}></img>
+                <img id="map"src={image} alt="Hi" onClick={finished? ()=>{}:click}></img>
             </div>
         </div>
     )
