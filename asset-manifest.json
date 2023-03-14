@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mapguess/static/css/main.777a1736.css",
+    "main.js": "/mapguess/static/js/main.43ea27f0.js",
+    "index.html": "/mapguess/index.html",
+    "main.777a1736.css.map": "/mapguess/static/css/main.777a1736.css.map",
+    "main.43ea27f0.js.map": "/mapguess/static/js/main.43ea27f0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.777a1736.css",
+    "static/js/main.43ea27f0.js"
+  ]
+}
