@@ -25,7 +25,7 @@ function App() {
         <Route path="/pickEdit" element = {<PickEdit/>}/>
         <Route path="/create" element={<Create/>}/>
         <Route path="/create/:paramId" element={<Create/>}/>
-        <Route path="/play" element = {<Game/>}/>
+        <Route path="/play/:id" element = {<Game/>}/>
         <Route path="/editPoint/:mapID/:pointID" element={<EditPoint/>}></Route>
       </Routes>
     </div>
