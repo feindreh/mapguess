@@ -6,6 +6,7 @@ import app from "./app";
 // storage
 
 export async function getImageUrlFromId(id){
+    console.log("load")
     try{
         const storage = getStorage();
         const storageRef = ref(storage, id);
@@ -21,6 +22,7 @@ export async function getImageUrlFromId(id){
 }
 
 export async function uploadImage(id,file){
+    console.log("save")
 
     const storage = getStorage();
     const storageRef = ref(storage, id);
@@ -38,6 +40,7 @@ export async function updateMap(id,obj){
 }
 
 export async function getMapCollection(){
+    console.log("load")
     const maps = await getDocs(collection(db, "map"));
 
     const mapArray = []
@@ -49,9 +52,12 @@ export async function getMapCollection(){
 }
 
 export async function getMapSingle(id){
+    console.log("load")
     const docRef = doc(db,"map",id)
     const Map = await getDoc(docRef)
     return Map.data()
 }
+
+
 
 
