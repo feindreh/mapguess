@@ -3,18 +3,18 @@ import { Link } from "react-router-dom"
 
 function Point(props){
 
-    const {point,deletePoint,mapID} = props
+    const {point,deletePoint,mapID,upload} = props
     
     const name = useRef()
 
     return (
         <div className="point">
 
-            <Link className="link" to={`/editPoint/${mapID}/${point.id}`}>
+            <Link onClick={upload}className="link" to={`/editPoint/${mapID}/${point.id}`}>
                             Bearbeiten
             </Link>
 
-            <div class="inputwrap">  
+            <div className="inputwrap">  
                 <input onChange={()=>{point.name=name.current.value}} ref={name}type="text" defaultValue={point.name} placeholder={"Was soll gefunden werden"}></input>
             </div>
 
