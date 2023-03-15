@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import Icon from '@mdi/react';
 import { mdiMapMarker } from '@mdi/js';
 
-import "./EditPoint.css"
 
 function EditPoint(){
 
