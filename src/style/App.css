@@ -22,7 +22,7 @@
     margin-left: auto;
     margin-right: auto;
 
-    background-image: url("../img/BackgroundCropped.png");
+    background-image: url("../img/backGround.png");
 
     --midtext: clamp(14px,2vw,20px);
     --bigtext: calc(var(--midtext)*1.6);
