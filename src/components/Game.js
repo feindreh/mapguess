@@ -95,10 +95,12 @@ function Game(){
     function placeClick(x,y){
         ClickedMarkerRef.current.style.transform = `translate(${x-15}px,${y -28}px)`
         ClickedMarkerRef.current.style.visibility = "visible"
+        ClickedMarkerRef.current.style.color = "black"
     }
     function placeTarget(x,y){
         TargetMarkerRef.current.style.transform = `translate(${x-15}px,${y -28}px)`
         TargetMarkerRef.current.style.visibility = "visible"
+        TargetMarkerRef.current.style.color = "red"
     }
 
 
@@ -108,7 +110,7 @@ function Game(){
         )
     }
     return(
-        <div >
+        <div className = "listContainer game">
             <div >
                 <div>
                     {finished? ("Spiel vorbei") : (`Findest du ${activePoint.name}?`)}
@@ -121,14 +123,14 @@ function Game(){
                 </button> 
             </div>
             
-            <div>
-                <div ref={TargetMarkerRef}>
+            <div  className = "pointImage">
+                <div className = "icon" ref={TargetMarkerRef}>
                     <Icon path={mdiMapMarker}/>
                 </div>
-                <div ref={ClickedMarkerRef}>
+                <div className = "icon" ref={ClickedMarkerRef}>
                     <Icon path={mdiMapMarker}/>
                 </div>
-                <img id="map"src={image} alt="Hi" onClick={finished? ()=>{}:click}></img>
+                <img className = "image" src={image} alt="Hi" onClick={finished? ()=>{}:click}></img>
             </div>
         </div>
     )
