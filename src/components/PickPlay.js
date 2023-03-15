@@ -19,17 +19,23 @@ function PickPlay(){
 
 
     return (
-        <div>
-            {maps.map((map)=>{
-                return(
-                <div key={map.id}>
-                    <div>{map.name}</div>
-                    <Link to={`/play/${map.id}`}>
-                        <button type = "button">Diese Map spielen!</button>
-                    </Link>
-                </div>
-                )
-            })}
+        <div className=" pickPlay listContainer" >
+            <div className="todo">
+                Wähle eine Karte
+            </div>
+
+            <div className="list">
+                {maps.map((map)=>{
+                    return(
+                    <div key={map.id} >
+                        <Link  className = "link" to={`/play/${map.id}`}>
+                           {map.name}
+                        </Link>
+                    </div>
+                    )
+                })}
+            </div>
+
         </div>
     )
 }

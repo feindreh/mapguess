@@ -16,17 +16,21 @@ function PickEdit(){
         },[])
 
     return (
-        <div>
-            {maps.map((map) => {
-                return(
-                    <div key={map.id}>
-                        <div>{map.name}</div>
-                        <Link to={`/create/${map.id}`}>
-                            <button type="button">Diese Karte bearbeiten</button>
-                        </Link>
-                    </div>
-                )
-            })}
+         <div className=" pickPlay listContainer">
+            <div className = "todo">
+                Karte bearbeiten
+            </div>
+            <div className="list">
+                {maps.map((map) => {
+                    return(
+                        <div key={map.id}>
+                            <Link className="link" to={`/create/${map.id}`}>
+                               {map.name}
+                            </Link>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }

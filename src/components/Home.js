@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 function Home(){
     return(
-        <div id="home">
+        <div id="home" className="listContainer">
             <div className="descriptionWrap">
                 <Link className="link" to={"/pickPlay"}>
                     Spielen
