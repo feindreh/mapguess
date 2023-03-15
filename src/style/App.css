@@ -5,17 +5,18 @@
     min-width: 300px;
 }
 #innerWrap{
-    display: relative;
+    display: flex;
+    flex-direction: column;
     
     box-shadow: 0px 0px 100px black;
 
-    width: 100%;
+    width: 100vw;
     max-width: 1000px;
 
     min-height: 100vh;
     height:100%;
 
-    display: block;
+
     margin-left: auto;
     margin-right: auto;
 
@@ -47,6 +48,17 @@
 
 /*Home*/
 
+#home{
+    flex:1;
+    display: flex;
+}
+
+#home .link{
+    border:solid black 5px;
+    background-color:rgb(255, 255, 255);
+    border-radius: 10px;
+    padding:10px;
+}
 
 
 
