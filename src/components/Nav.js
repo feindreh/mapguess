@@ -7,6 +7,13 @@ function NavBar(){
             <Link className = "link"to={"/"}>
                 Home
             </Link>
+            <Link className = "link"to={"/"}>
+                Login
+            </Link>
+            <Link className = "link"to={"/"}>
+                Kontakt
+            </Link>
+            
         </div>
     )
 }
