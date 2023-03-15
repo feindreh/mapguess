@@ -60,7 +60,7 @@ function Create(){
     }
     
     return(
-        <div id="create">
+        <div>
             <button type="button" onClick={upload}>Sichern</button>
             <label>Name dieser Karte</label>
             <input type="text" onChange={()=>{setName(NameRef.current.value)}} ref={NameRef} defaultValue={name} placeholder={"Name der Karte"}></input>

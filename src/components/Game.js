@@ -108,9 +108,8 @@ function Game(){
         )
     }
     return(
-        <div id="Game">
-            
-            <div id ="header">
+        <div >
+            <div >
                 <div>
                     {finished? ("Spiel vorbei") : (`Findest du ${activePoint.name}?`)}
                 </div>
@@ -121,14 +120,12 @@ function Game(){
                     Neustart
                 </button> 
             </div>
-
             
-            
-            <div className="imgwrap">
-                <div className="icon TargetMark" ref={TargetMarkerRef}>
+            <div>
+                <div ref={TargetMarkerRef}>
                     <Icon path={mdiMapMarker}/>
                 </div>
-                <div className="icon ClickMark" ref={ClickedMarkerRef}>
+                <div ref={ClickedMarkerRef}>
                     <Icon path={mdiMapMarker}/>
                 </div>
                 <img id="map"src={image} alt="Hi" onClick={finished? ()=>{}:click}></img>

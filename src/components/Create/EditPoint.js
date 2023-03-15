@@ -79,14 +79,14 @@ function EditPoint(){
     },[])
 
     return(
-        <div id="editPoint"> 
+        <div> 
             <div>Wo ist {point?point.name:"Der Punkt"}</div>
             <button type="button" onClick={upload}>Speichern</button>
             <Link to = {`/create/${mapID}`}> 
                 <button type="button">Zurück</button>
             </Link>
-            <div className="imgwrap" ref={ImageRef}>
-                <div className="icon ClickMark" ref={MarkRef}>
+            <div  ref={ImageRef}>
+                <div ref={MarkRef}>
                     <Icon path={mdiMapMarker}/>
                 </div>
                 <img src={url} alt="warum" onClick={handleClick}></img>
