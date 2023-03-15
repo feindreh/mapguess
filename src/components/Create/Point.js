@@ -8,15 +8,17 @@ function Point(props){
     const name = useRef()
 
     return (
-        <div>
-            <div>
-                Punkt : 
-            </div>
-            <input onChange={()=>{point.name=name.current.value}} ref={name}type="text" defaultValue={point.name} placeholder={"Was soll gefunden werden"}></input>
-            <Link to={`/editPoint/${mapID}/${point.id}`}>
-                <button type="button">Diesen Punkt bearbeiten</button>
+        <div className="point">
+
+            <Link className="link" to={`/editPoint/${mapID}/${point.id}`}>
+                            Bearbeiten
             </Link>
-            <button type="button" onClick={()=>{deletePoint(point.id)}}>Löschen</button>
+
+            <div class="inputwrap">  
+                <input onChange={()=>{point.name=name.current.value}} ref={name}type="text" defaultValue={point.name} placeholder={"Was soll gefunden werden"}></input>
+            </div>
+
+            <div className ="link" onClick={()=>{deletePoint(point.id)}}>Löschen</div>
         </div>
     )
 }

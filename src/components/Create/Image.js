@@ -31,16 +31,16 @@ function Image(props){
 
     if(hasPicture){
         return(
-            <div>
+            <div className = "imgWrap">
                 <button type = "button" onClick={()=>{setHasPicture(false)}}>Bild ändern</button>
-                <img src={url} alt="image"></img>
+                <img className = "img" src={url} alt="image"></img>
             </div>
         )
     }else{
         return(
-            <div>
-                <input ref={fileRef} type="file"></input>
+            <div className = "todo">
                 <button type="button" onClick={upload}>upload</button>
+                <input ref={fileRef} type="file"></input>
             </div>
         )
     }

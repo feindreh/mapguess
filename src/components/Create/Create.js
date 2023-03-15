@@ -60,13 +60,23 @@ function Create(){
     }
     
     return(
-        <div>
-            <button type="button" onClick={upload}>Sichern</button>
-            <label>Name dieser Karte</label>
-            <input type="text" onChange={()=>{setName(NameRef.current.value)}} ref={NameRef} defaultValue={name} placeholder={"Name der Karte"}></input>
+        <div id="create" className="listContainer">
+
+            <button type="button" onClick={upload}>Karte Sichern</button>
+
             <Image id={id}/>
+
+            <label className="todo">
+                <div>Name der Karte</div>
+                <input className="name"type="text" onChange={()=>{setName(NameRef.current.value)}} ref={NameRef} defaultValue={name} placeholder={"Name der Karte"}></input>
+            </label>
+            
+            
+
             {points.map((point) => <Point deletePoint={deletePoint}key={point.id} point={point} mapID={id}/>)}
+
             <button type="button" onClick={()=>{setPoints([...points,newPoint()])}}>Neuer Punkt</button>
+
         </div>
     )
 }
