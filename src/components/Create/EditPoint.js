@@ -44,11 +44,14 @@ function EditPoint(){
         const xAdjusted = x * ImageRef.current.offsetWidth
         const yAdjusted = y * ImageRef.current.offsetHeight
 
+
         MarkRef.current.style.transform = `translate(${xAdjusted-15}px,${yAdjusted-28}px)`;
         MarkRef.current.style.visibility = "visible";
+        MarkRef.current.style.color = "blue"
     }
 
     function handleClick(e){
+
 
         let x = e.nativeEvent.offsetX / e.target.width
         let y = e.nativeEvent.offsetY / e.target.height
@@ -79,17 +82,19 @@ function EditPoint(){
     },[])
 
     return(
-        <div> 
-            <div>Wo ist {point?point.name:"Der Punkt"}</div>
-            <button type="button" onClick={upload}>Speichern</button>
-            <Link to = {`/create/${mapID}`}> 
-                <button type="button">Zurück</button>
-            </Link>
-            <div  ref={ImageRef}>
-                <div ref={MarkRef}>
+        <div className = "listContainer"> 
+            <div>
+                <div>Wo ist {point?point.name:"Der Punkt"}</div>
+                <button type="button" onClick={upload}>Speichern</button>
+                <Link to = {`/create/${mapID}`}>
+                    <button type="button">Zurück</button>
+                </Link>
+            </div>
+            <div  className = "pointImage" ref={ImageRef}>
+                <div  className = "icon"ref={MarkRef}>
                     <Icon path={mdiMapMarker}/>
                 </div>
-                <img src={url} alt="warum" onClick={handleClick}></img>
+                <img className = "image"src={url} alt="warum" onClick={handleClick}></img>
             </div>
         </div>
     )
