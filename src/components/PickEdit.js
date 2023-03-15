@@ -1,6 +1,5 @@
 import { useEffect,useState } from "react"
 import { getMapCollection } from "../firebase/firebase"
-import "./PickEdit.css"
 import { Link } from "react-router-dom"
 
 function PickEdit(){

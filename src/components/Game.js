@@ -1,8 +1,8 @@
-import "./Game.css"
+
 import { useState,useRef, useEffect } from "react"
 
 import Icon from '@mdi/react';
-import { mdiLoading, mdiMapMarker } from '@mdi/js';
+import { mdiMapMarker } from '@mdi/js';
 import { getImageUrlFromId, getMapSingle } from "../firebase/firebase";
 import { useParams } from "react-router";
 
