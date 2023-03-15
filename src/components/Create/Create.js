@@ -73,7 +73,7 @@ function Create(){
             
             
 
-            {points.map((point) => <Point deletePoint={deletePoint}key={point.id} point={point} mapID={id}/>)}
+            {points.map((point) => <Point upload={upload}deletePoint={deletePoint}key={point.id} point={point} mapID={id}/>)}
 
             <button type="button" onClick={()=>{setPoints([...points,newPoint()])}}>Neuer Punkt</button>
 
