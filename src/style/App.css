@@ -234,8 +234,24 @@
     height:100%;
     padding-left:10px;
 }
+/* EditPoint */
+.pointImage{
+    position: relative;
+    width: 100%;
 
-/* icon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image{
+    width: 100%;
+}
+/* Game */
+.game{
+    background:rgba(255, 255, 255, 0.61); 
+}
+/* Icons */
 
 
 .icon{
@@ -243,4 +259,8 @@
     width:30px;
     height:auto;
     transform:translate(-50%,-80%);
+
+    visibility: hidden;
+    left:0;
+    top:0
 }
