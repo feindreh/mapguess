@@ -3,6 +3,8 @@
 #outerWrap{
     background-color: rgb(255, 255, 247);
     min-width: 300px;
+
+    
 }
 #innerWrap{
     display: flex;
@@ -21,14 +23,17 @@
     margin-right: auto;
 
     background-image: url("../img/BackgroundCropped.png");
+
+    --midtext: clamp(14px,2vw,20px);
+    --bigtext: calc(var(--midtext)*1.6);
 }
 
 /*Navbar*/
 
 #navbar{
-    height:80px;
+    height:calc(var(--midtext)*5);
     background:rgba(255, 255, 255, 0.493);
-    font-size: 22px;
+    font-size: var(--bigtext);
     font-weight: bold;
 
     display: flex;
@@ -49,15 +54,48 @@
 /*Home*/
 
 #home{
-    flex:1;
+    flex: 1 1;
     display: flex;
+    gap:40px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding:10px;
 }
+
+.descriptionWrap{
+    display: grid;
+    grid-template-columns: calc(var(--bigtext)*6) 1fr;
+    grid-gap:20px;
+    max-width: 600px;
+}
+
+.description{
+    font-size:var(--midtext);
+    text-align: center;
+    color:rgb(43, 43, 43);
+    border:solid rgb(43, 43, 43) 2px;
+    background-color:rgb(255, 255, 255);
+    padding:10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
 
 #home .link{
     border:solid black 5px;
     background-color:rgb(255, 255, 255);
-    border-radius: 10px;
-    padding:10px;
+    border-radius: 20px;
+    padding:var(--midtext);
+    font-size: var(--bigtext);
+    font-weight: bold;
+    text-align: center;
+    height:calc(var(--bigtext)*2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
