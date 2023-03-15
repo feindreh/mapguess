@@ -4,14 +4,14 @@ import { Link } from "react-router-dom"
 
 function Home(){
     return(
-        <div>
-            <Link to={"/pickPlay"}>
+        <div id="home">
+            <Link className="link" to={"/pickPlay"}>
                 Play
             </Link>
-            <Link to={"/pickEdit"}>
+            <Link className="link" to={"/pickEdit"}>
                 Bearbeiten
             </Link>
-            <Link to={"/create"}>
+            <Link className="link" to={"/create"}>
                 Neue Karte
             </Link>
         </div>
