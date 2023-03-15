@@ -20,7 +20,29 @@
     background-image: url("../img/BackgroundCropped.png");
 }
 
+/*Navbar*/
 
+#navbar{
+    height:80px;
+    background:rgba(255, 255, 255, 0.493);
+    font-size: 24px;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 0px 50px 0px black;
+    margin-bottom:5px;
+}
+
+#navbar .link{
+    border:solid black 5px;
+    background-color:rgb(255, 255, 255);
+    border-radius: 10px;
+    padding:10px;
+    
+}
 /*Home*/
 
 
