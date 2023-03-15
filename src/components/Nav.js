@@ -7,10 +7,10 @@ function NavBar(){
             <Link className = "link"to={"/"}>
                 Home
             </Link>
-            <Link className = "link"to={"/"}>
+            <Link className = "link"to={"/filler"}>
                 Login
             </Link>
-            <Link className = "link"to={"/"}>
+            <Link className = "link"to={"/filler"}>
                 Kontakt
             </Link>
             

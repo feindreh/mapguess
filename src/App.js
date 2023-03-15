@@ -9,6 +9,8 @@ import Create from "./components/Create/Create";
 import Game from "./components/Game";
 import EditPoint from "./components/Create/EditPoint"
 
+import Filler from "./components/Filler";
+
 
 import "./style/reset.css"
 import "./style/helper.css"
@@ -23,6 +25,7 @@ function App() {
         <NavBar/>
         <Routes>
           <Route path="/" element = {<Home/>}/>
+          <Route path="/filler" element = {<Filler/>}/>
           <Route path="/pickPlay" element = {<PickPlay/>}/>
           <Route path="/pickEdit" element = {<PickEdit/>}/>
           <Route path="/create" element={<Create/>}/>
