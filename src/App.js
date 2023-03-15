@@ -11,7 +11,9 @@ import EditPoint from "./components/Create/EditPoint"
 
 
 import "./style/reset.css"
+import "./style/helper.css"
 import "./style/App.css"
+
 
 function App() {
 
