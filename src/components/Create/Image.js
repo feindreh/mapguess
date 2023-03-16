@@ -4,7 +4,7 @@ import { getImageUrlFromId, uploadImage } from "../../firebase/firebase"
 
 function Image(props){
     
-    const {id} = props
+    const {id,uploadMap,setHasImage} = props
 
     const [hasPicture,setHasPicture] = useState(false)
     const [url,setUrl] = useState()
@@ -16,12 +16,15 @@ function Image(props){
         if(url){
             setUrl(url)
             setHasPicture(true)
+            setHasImage(true)
         }else{
             setHasPicture(false)
         }
     }
     async function upload(){
         await uploadImage(id,fileRef.current.files[0])
+        await uploadMap()
+        setHasImage(true)
         getPicture()
         
     }
@@ -32,15 +35,15 @@ function Image(props){
     if(hasPicture){
         return(
             <div className = "imgWrap">
-                <button type = "button" onClick={()=>{setHasPicture(false)}}>Bild ändern</button>
+                <button className="button mid"type = "button" onClick={()=>{setHasPicture(false)}}>Bild ändern</button>
                 <img className = "img" src={url} alt="image"></img>
             </div>
         )
     }else{
         return(
-            <div className = "todo">
-                <button type="button" onClick={upload}>upload</button>
-                <input ref={fileRef} type="file"></input>
+            <div >
+                <button className = "mid button"type="button" onClick={upload}>upload</button>
+                <input className = "mid content"ref={fileRef} type="file"></input>
             </div>
         )
     }
