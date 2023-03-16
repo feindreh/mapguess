@@ -13,6 +13,41 @@
     margin-bottom:5px;
 }
 
+
+/* Helper */
+
+.link{
+    color:black;
+    text-decoration: none;
+}
+
+.button{
+    background-color:rgb(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.content{
+    background-color:rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mid{
+    font-size: var(--midtext);
+    height:calc(var(--midtext)*2);
+    border:solid black 2px;
+}
+
+.big{
+    font-size: var(--bigtext);
+    height:calc(var(--bigtext)*2);
+    border:solid black 4px;
+}
 /*App*/
 
 #outerWrap{
@@ -48,8 +83,6 @@
 #navbar{
     height:calc(var(--midtext)*5);
     background:rgb(255, 255, 255);
-    font-size: var(--bigtext);
-    font-weight: bold;
 
     display: flex;
     gap:20px;
@@ -59,13 +92,6 @@
     margin-bottom:5px;
 }
 
-#navbar .link{
-    border:solid black 2px;
-    background-color:rgb(255, 255, 255);
-    border-radius: 10px;
-    padding:10px;
-}
-
 .listContainer{
     flex: 1 1;
     display: flex;
@@ -73,8 +99,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
-
 }
 /*Home*/
 
@@ -102,40 +126,11 @@
     align-items: center;
  }
 
-#home .link{
-    border:solid black 5px;
-    background-color:rgb(255, 255, 255);
-    border-radius: 20px;
-    padding:var(--midtext);
-    font-size: var(--bigtext);
-    font-weight: bold;
-    text-align: center;
-    height:calc(var(--bigtext)*2);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* PickPlay */
 #pickPlay{
 
 }
 
-.pickPlay .link{
-    border:solid rgb(34, 34, 34) 2px;
-    background-color:rgb(255, 255, 255);
-    border-radius: 20px;
-    padding:var(--bigtext);
-    font-size: var(--bigtext);
-    font-weight: bold;
-    text-align: center;
-    height:calc(var(--bigtext)*2);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .list{
     display: flex;
@@ -191,36 +186,12 @@
     box-shadow: 0px 0px 15px black;
 }
 
-.point .link{
-    background-color:rgb(255, 255, 255);
-    padding:var(--midtext);
-    font-size: var(--midtext);
-    font-weight: bold;
-    text-align: center;
-    height:calc(var(--midtext)*2);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .inputwrap{
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.point{
-    display: flex;
-    border:solid black 2px;
-}
-
-.point .link:first-child{
-    border-right: solid 2px black;
-}
-.point .link:last-child{
-    border-left: solid 2px black
 }
 
 .point input{
