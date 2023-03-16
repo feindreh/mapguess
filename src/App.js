@@ -13,7 +13,6 @@ import Filler from "./components/Filler";
 
 
 import "./style/reset.css"
-import "./style/helper.css"
 import "./style/App.css"
 
 
