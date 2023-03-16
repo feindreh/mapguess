@@ -1,6 +1,6 @@
 
 
-import { useEffect, useRef,useState } from "react"
+import { useEffect,useState } from "react"
 import uniqid from "uniqid"
 import { useParams } from "react-router"
 
@@ -8,6 +8,7 @@ import { updateMap,getMapSingle } from "../../firebase/firebase"
 
 import Point from "./Point"
 import Image from "./Image"
+import Name from "./Name"
 
 function Create(){
     
@@ -24,9 +25,6 @@ function Create(){
     const [id,setId] = useState(getId())
     const [name,setName] = useState(null)
     const [points,setPoints] = useState([newPoint()])
-
-    const NameRef = useRef()
-
 
     async function load(){
         const map = await getMapSingle(id)
@@ -62,20 +60,15 @@ function Create(){
     return(
         <div id="create" className="listContainer">
 
-            <button type="button" onClick={upload}>Karte Sichern</button>
+            <button className = " mid button"type="button" onClick={upload}>Karte Sichern</button>
 
-            <Image id={id}/>
+            <Name name ={name} setName = {setName}/>
 
-            <label className="todo">
-                <div>Name der Karte</div>
-                <input className="name"type="text" onChange={()=>{setName(NameRef.current.value)}} ref={NameRef} defaultValue={name} placeholder={"Name der Karte"}></input>
-            </label>
-            
-            
+            {/* <Image id={id}/>
+
 
             {points.map((point) => <Point upload={upload}deletePoint={deletePoint}key={point.id} point={point} mapID={id}/>)}
-
-            <button type="button" onClick={()=>{setPoints([...points,newPoint()])}}>Neuer Punkt</button>
+            <button type="button" onClick={()=>{setPoints([...points,newPoint()])}}>Neuer Punkt</button> */}
 
         </div>
     )

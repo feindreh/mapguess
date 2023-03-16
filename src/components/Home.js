@@ -6,7 +6,7 @@ function Home(){
     return(
         <div id="home" className="listContainer">
             <div className="descriptionWrap">
-                <Link className="link" to={"/pickPlay"}>
+                <Link className="link big button" to={"/pickPlay"}>
                     Spielen
                 </Link>
                 <div className="description">
@@ -14,7 +14,7 @@ function Home(){
                 </div>
             </div>
             <div className="descriptionWrap">
-                <Link className="link" to={"/pickEdit"}>
+                <Link className="link big button" to={"/pickEdit"}>
                     Bearbeiten
                 </Link>
                 <div className="description">
@@ -22,7 +22,7 @@ function Home(){
                 </div>
             </div>
             <div className="descriptionWrap">
-                <Link className="link" to={"/create"}>
+                <Link className="link big button"  to={"/create"}>
                     Neue Karte
                 </Link>
                 <div className="description">
