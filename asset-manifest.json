@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/mapguess/static/css/main.c8f07a09.css",
-    "main.js": "/mapguess/static/js/main.898abc4f.js",
+    "main.css": "/mapguess/static/css/main.cf2b89e7.css",
+    "main.js": "/mapguess/static/js/main.22d9f9cd.js",
     "static/media/backGround.png": "/mapguess/static/media/backGround.4219c5763525524f30cd.png",
     "index.html": "/mapguess/index.html",
-    "main.c8f07a09.css.map": "/mapguess/static/css/main.c8f07a09.css.map",
-    "main.898abc4f.js.map": "/mapguess/static/js/main.898abc4f.js.map"
+    "main.cf2b89e7.css.map": "/mapguess/static/css/main.cf2b89e7.css.map",
+    "main.22d9f9cd.js.map": "/mapguess/static/js/main.22d9f9cd.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8f07a09.css",
-    "static/js/main.898abc4f.js"
+    "static/css/main.cf2b89e7.css",
+    "static/js/main.22d9f9cd.js"
   ]
 }
