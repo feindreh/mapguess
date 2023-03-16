@@ -112,13 +112,13 @@ function Game(){
     return(
         <div className = "listContainer game">
             <div >
-                <div>
+                <div className="mid content">
                     {finished? ("Spiel vorbei") : (`Findest du ${activePoint.name}?`)}
                 </div>
-                <div>
+                <div className="mid content">
                     Punkte: {score}
                 </div>
-                <button type="button" onClick={reset}>
+                <button className="mid button" type="button" onClick={reset}>
                     Neustart
                 </button> 
             </div>
