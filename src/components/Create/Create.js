@@ -25,6 +25,7 @@ function Create(){
     const [id,setId] = useState(getId())
     const [name,setName] = useState(null)
     const [points,setPoints] = useState([newPoint()])
+    const [hasImage,setHasImage] = useState(false)
 
     async function load(){
         const map = await getMapSingle(id)
@@ -56,6 +57,10 @@ function Create(){
         const newState = oldState.filter((point) => point.id!==id)
         setPoints(newState)
     }
+
+    function addNewPoint(){
+        setPoints([...points,newPoint()])
+    }
     
     return(
         <div id="create" className="listContainer">
@@ -64,11 +69,10 @@ function Create(){
 
             <Name name ={name} setName = {setName}/>
 
-            {/* <Image id={id}/>
+            {name?<Image id={id} setHasImage={setHasImage} uploadMap={upload}/>:<></>}
 
-
-            {points.map((point) => <Point upload={upload}deletePoint={deletePoint}key={point.id} point={point} mapID={id}/>)}
-            <button type="button" onClick={()=>{setPoints([...points,newPoint()])}}>Neuer Punkt</button> */}
+            {hasImage?points.map((point) => <Point newPoint={newPoint}upload={upload}deletePoint={deletePoint}key={point.id} point={point} mapID={id}/>):<></>}
+            {hasImage?<button className="mid button" type="button" onClick={addNewPoint}>Neuer Punkt</button>:<></>}
 
         </div>
     )
