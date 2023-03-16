@@ -28,7 +28,7 @@ function PickPlay(){
                 {maps.map((map)=>{
                     return(
                     <div key={map.id} >
-                        <Link  className = "link" to={`/play/${map.id}`}>
+                        <Link  className = "link mid button" to={`/play/${map.id}`}>
                            {map.name}
                         </Link>
                     </div>

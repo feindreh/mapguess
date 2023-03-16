@@ -84,11 +84,13 @@ function EditPoint(){
     return(
         <div className = "listContainer"> 
             <div>
-                <div>Wo ist {point?point.name:"Der Punkt"}</div>
-                <button type="button" onClick={upload}>Speichern</button>
-                <Link to = {`/create/${mapID}`}>
-                    <button type="button">Zurück</button>
-                </Link>
+                <div className="mid content">Wo ist {point?point.name:"Der Punkt"}</div>
+                <div className="buttonWrap">
+                    <button className="mid button" type="button" onClick={upload}>Speichern</button>
+                    <Link className="link mid button"to = {`/create/${mapID}`}>
+                        <div>Zurück</div>
+                    </Link>
+                </div>
             </div>
             <div  className = "pointImage" ref={ImageRef}>
                 <div  className = "icon"ref={MarkRef}>

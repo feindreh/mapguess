@@ -10,15 +10,15 @@ function Point(props){
     return (
         <div className="point">
 
-            <Link onClick={upload}className="link" to={`/editPoint/${mapID}/${point.id}`}>
-                            Bearbeiten
-            </Link>
-
             <div className="inputwrap">  
-                <input onChange={()=>{point.name=name.current.value}} ref={name}type="text" defaultValue={point.name} placeholder={"Was soll gefunden werden"}></input>
+                <input className="mid content"onChange={()=>{point.name=name.current.value}} ref={name}type="text" defaultValue={point.name} placeholder={"Was soll gefunden werden"}></input>
             </div>
-
-            <div className ="link" onClick={()=>{deletePoint(point.id)}}>Löschen</div>
+            <div className="buttonWrap">
+                <Link onClick={upload}className="link button mid" to={`/editPoint/${mapID}/${point.id}`}>
+                                Bearbeiten
+                </Link>
+                <div className ="link mid button" onClick={()=>{deletePoint(point.id)}}>Löschen</div>
+            </div>
         </div>
     )
 }

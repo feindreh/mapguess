@@ -24,7 +24,7 @@ function PickEdit(){
                 {maps.map((map) => {
                     return(
                         <div key={map.id}>
-                            <Link className="link" to={`/create/${map.id}`}>
+                            <Link className="link mid button" to={`/create/${map.id}`}>
                                {map.name}
                             </Link>
                         </div>
