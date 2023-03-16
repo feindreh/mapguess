@@ -32,6 +32,7 @@ function App() {
           <Route path="/play/:id" element = {<Game/>}/>
           <Route path="/editPoint/:mapID/:pointID" element={<EditPoint/>}></Route>
         </Routes>
+        <div id="footer"></div>
       </div>
     </div>
   );
