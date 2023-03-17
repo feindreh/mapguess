@@ -87,11 +87,18 @@
     background:rgb(255, 255, 255);
 
     display: flex;
-    gap:20px;
+    gap:30px;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 4px 0px rgb(128, 128, 128);
     margin-bottom:5px;
+}
+
+#navbar .link{
+    border:none;
+    border-bottom:solid rgb(94, 94, 94) 2px;
+    border-radius: 0px;
+    padding:0px;
 }
 
 #footer{
