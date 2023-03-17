@@ -1,6 +1,9 @@
 import { useEffect, useRef,useState } from "react"
 import { Link } from "react-router-dom"
 
+import Icon from '@mdi/react';
+import { mdiCheckBold,mdiExclamationThick } from '@mdi/js';
+
 function Point(props){
 
     const {point,deletePoint,mapID,upload} = props
@@ -10,19 +13,22 @@ function Point(props){
     useEffect(()=>{
         checkRef.current.style.position = "absolute"
         checkRef.current.style.transform = "translate(-100%,0)"
-        checkRef.current.style.height = "calc(var(--midtext)*3)"
-        checkRef.current.style.width = "calc(var(--midtext)*3)"
-        checkRef.current.style.border = "solid black 2px"
-        checkRef.current.style.width = checkRef.current.offsetWidth
-        if(point.x!==null && point.y!==null){
-            setCheck(true)
-            checkRef.current.style.backgroundColor = "green"
-        }else{
-            setCheck(false)
-            checkRef.current.style.backgroundColor = "red"
-        }
+        checkRef.current.style.height = "calc(var(--midtext)*5)"
+        checkRef.current.style.width = "calc(var(--midtext)*5)"
+        checkRef.current.style.backgroundColor = "white"
+        checkCheck()
     }
     ,[point.x,point.y])
+
+    function checkCheck(){
+            if(point.x!==null && point.y!==null && point.name!=="" && point.name !==null){
+                        setCheck(true)
+                        checkRef.current.style.color = "green"
+                    }else{
+                        setCheck(false)
+                        checkRef.current.style.color = "red"
+                    }
+        }
 
     const checkRef=useRef()
 
@@ -30,9 +36,9 @@ function Point(props){
 
     return (
         <div className="point">
-            <div ref={checkRef} className="check">{check?"Good":"Bad"}</div>
+            <Icon ref={checkRef} path={check?mdiCheckBold:mdiExclamationThick} size={1} />
             <div className="inputwrap">  
-                <input className="mid content"onChange={()=>{point.name=name.current.value}} ref={name}type="text" defaultValue={point.name} placeholder={"Was soll gefunden werden"}></input>
+                <input className="mid content"onChange={()=>{point.name=name.current.value;checkCheck()}} ref={name}type="text" defaultValue={point.name} placeholder={"Was soll gefunden werden"}></input>
             </div>
             <div className="buttonWrap">
                 <Link onClick={upload}className="link button mid" to={`/editPoint/${mapID}/${point.id}`}>
