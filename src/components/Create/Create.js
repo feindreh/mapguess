@@ -10,6 +10,8 @@ import Point from "./Point"
 import Image from "./Image"
 import Name from "./Name"
 
+import { newPoint } from "../../Picker.js/pick"
+
 function Create(){
     
     const {paramId} = useParams()
@@ -37,14 +39,7 @@ function Create(){
         load() 
         }
     },[])
-    function newPoint(){
-        return{
-            id:uniqid(),
-            name:null,
-            x:null,
-            y:null,
-        }
-    }
+
     function upload(){
        updateMap(id,{
            name:name,
@@ -57,8 +52,7 @@ function Create(){
         const newState = oldState.filter((point) => point.id!==id)
         setPoints(newState)
     }
-
-    function addNewPoint(){
+    function addNewPoint( setPoints,points,newPoint){
         setPoints([...points,newPoint()])
     }
     
@@ -72,7 +66,7 @@ function Create(){
             {name?<Image id={id} setHasImage={setHasImage} uploadMap={upload}/>:<></>}
 
             {hasImage?points.map((point) => <Point newPoint={newPoint}upload={upload}deletePoint={deletePoint}key={point.id} point={point} mapID={id}/>):<></>}
-            {hasImage?<button className="mid button" type="button" onClick={addNewPoint}>Neuer Punkt</button>:<></>}
+            {hasImage?<button className="mid button" type="button" onClick={()=>addNewPoint(setPoints,points,newPoint)}>Neuer Punkt</button>:<></>}
 
         </div>
     )

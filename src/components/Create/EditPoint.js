@@ -4,21 +4,24 @@ import { getImageUrlFromId, getMapSingle, updateMap} from "../../firebase/fireba
 
 import { Link } from "react-router-dom";
 
-import Icon from '@mdi/react';
-import { mdiMapMarker } from '@mdi/js';
+import { newArea } from "../../Picker.js/pick";
 
+import Area from "./area";
 
 function EditPoint(){
 
     const {mapID,pointID} = useParams()
 
+
+
+
+
+    
     const [url,setUrl] = useState()
     const [map,setMap] = useState()
     const [point,setPoint] = useState()
-    const [x,setX] = useState(null)
-    const [y,setY] = useState(null)
+    const [areas,setAreas] = useState([])
     
-    const MarkRef = useRef()
     const ImageRef = useRef()
 
     async function load(){
@@ -30,56 +33,36 @@ function EditPoint(){
 
         points.forEach((point) => {if(point.id === pointID){
             setPoint(point)
-            if(point.x !== null && point.y !== null){
-                placeMarker(point.x,point.y)
-                setX(point.x)
-                setY(point.y)
-            }
+            setAreas(point.areas)
         }})
     
     }
 
-    function placeMarker(x,y){
-
-        const xAdjusted = x * ImageRef.current.offsetWidth
-        const yAdjusted = y * ImageRef.current.offsetHeight
-
-
-        MarkRef.current.style.transform = `translate(${xAdjusted-15}px,${yAdjusted-28}px)`;
-        MarkRef.current.style.visibility = "visible";
-        MarkRef.current.style.color = "blue"
-    }
-
     function handleClick(e){
-
-
         let x = e.nativeEvent.offsetX / e.target.width
         let y = e.nativeEvent.offsetY / e.target.height
 
-        placeMarker(x,y)
-        setX(x)
-        setY(y)
+        setAreas([...areas,newArea(x,y)])
     }
 
-    async function upload(){
+    function upload(){
 
-        const newPoint = {
-            name:point.name,
-            id:point.id,
-            x:x,
-            y:y,
-        }
-        console.log(map)
-        const newPoints = [...map.points.filter((point) => point.id !== pointID),newPoint]
-        map.points = newPoints
+        const newMap = map
 
-        //Upload new Map
-        await updateMap(mapID,map)
+        newMap.points.forEach((point)=>{
+            if(point.id === pointID){
+                point.areas = areas
+            }
+        })
+
+        updateMap(mapID,newMap)
     }
 
     useEffect(()=>{
         load()
     },[])
+
+    console.log(ImageRef)
 
     return(
         <div className = "listContainer"> 
@@ -92,11 +75,9 @@ function EditPoint(){
                     </Link>
                 </div>
             </div>
-            <div  className = "pointImage" ref={ImageRef}>
-                <div  className = "icon"ref={MarkRef}>
-                    <Icon path={mdiMapMarker}/>
-                </div>
-                <img className = "image"src={url} alt="warum" onClick={handleClick}></img>
+            <div  className = "pointImage" >
+                <img className="image" src={url} alt="warum" ref={ImageRef} onClick={handleClick}></img>
+                {areas.map((area)=>{return <Area image={ImageRef.current}area = {area} key={area.id}/>})}
             </div>
         </div>
     )
