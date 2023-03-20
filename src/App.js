@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import PickPlay from "./components/PickPlay";
 import PickEdit from "./components/PickEdit";
 import Create from "./components/Create/Create";
-import Game from "./components/Game";
+import Game from "./components/Game/Game";
 import EditPoint from "./components/Create/EditPoint"
 
 import Filler from "./components/Filler";
